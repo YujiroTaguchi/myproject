@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}予約一覧{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>予約一覧</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>レストラン名</th>
+                <th>予約日</th>
+                <th>予約時間</th>
+                <th>人数</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation.restaurant.name }}</td>
+                <td>{{ reservation.reservation_date }}</td>
+                <td>{{ reservation.reservation_time }}</td>
+                <td>{{ reservation.number_of_people }}</td>
+                <td>
+                    <a href="{% url 'cancel_reservation' reservation.id %}" class="btn btn-danger btn-sm">キャンセル</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

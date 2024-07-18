@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Nagoyameshi{% endblock %}
+
+{% block content %}
+<!-- メインビジュアルは削除 -->
+
+
+<section class="container mt-4">
+    <h2>レストラン一覧</h2>
+    <form method="get" action="{% url 'restaurant_list' %}">
+        <div class="row">
+            <div class="col-md-6">
+                <input type="text" name="name" class="form-control" placeholder="店名で検索" value="{{ request.GET.name }}">
+            </div>
+            <div class="col-md-4">
+                <select name="category" class="form-control">
+                    <option value="">すべてのカテゴリ</option>
+                    {% for category in categories %}
+                    <option value="{{ category.id }}" {% if request.GET.category == category.id|stringformat:"s" %}selected{% endif %}>{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary">検索</button>
+            </div>
+        </div>
+    </form>
+    <div class="row mt-4">
+        {% for restaurant in restaurants %}
+        <div class="col-md-3 mb-4">
+            <div class="card">
+                <img src="{{ restaurant.img.url }}" class="card-img-top" alt="{{ restaurant.name }}">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{% url 'restaurant_detail' restaurant.pk %}" class="text-decoration-none text-dark">{{ restaurant.name }}</a></h5>
+                    <!-- 平均評価を表示 -->
+                    {% if restaurant.avg_rating %}
+                    <div class="rating">
+                        平均評価: {{ restaurant.avg_rating }}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
