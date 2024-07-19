@@ -79,10 +79,16 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 load_dotenv()
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL')
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.getenv('NAME'),
+        'USER' : os.getenv('USER'),
+        'PASSWORD':os.getenv('PASSWORD'),
+        'HOST' : os.getenv('HOST'),
+        'PORT': os.getenv('PORT'),
+    }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
