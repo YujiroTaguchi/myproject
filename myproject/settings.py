@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-import dj_database_url  # この行を追加
 import django_heroku
 from dotenv import load_dotenv
 import os
