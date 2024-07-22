@@ -30,6 +30,7 @@ SECRET_KEY = 'django-insecure-5hnq_nbmg1_oo$+uk_nqscyzq--)1ql%gzwy4-fqb6x*pgzkf&
 DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', 'nagoyameshi-ytt-3652aaa17dff.herokuapp.com']
+CSRF_TRUSTED_ORIGINS = ['https://nagoyameshi-ytt-3652aaa17dff.herokuapp.com']
 
 
 # Application definition
