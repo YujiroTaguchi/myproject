@@ -258,7 +258,7 @@ def edit_profile(request):
 # StripeのCheckoutセッション作成ビュー
 class CreateCheckoutSessionView(View):
     def post(self, request, *args, **kwargs):
-        YOUR_DOMAIN = os.getenv('YOUR_DOMAIN')
+        YOUR_DOMAIN = settings.YOUR_DOMAIN
         try:
             checkout_session = stripe.checkout.Session.create(
                 payment_method_types=['card'],

@@ -168,4 +168,4 @@ STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY')
 django_heroku.settings(locals())
 
 #環境変数の読み込み
-YOUR_DOMAIN = os.getenv('YOUR_DOMAIN')
+YOUR_DOMAIN = os.getenv('YOUR_DOMAIN', 'https://nagoyameshi-ytt-3652aaa17dff.herokuapp.com')
